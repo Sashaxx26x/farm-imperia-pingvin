@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Админ-панель — Пингвин Империя</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="rules-page">
+
+    <div class="container" style="max-width:800px;">
+        <h1>👑 Админ-панель</h1>
+        <p class="subtitle">Только для создателя игры</p>
+
+        <div class="rules-content" style="width:100%;">
+            <h3>Список пользователей</h3>
+            <div id="adminUserList" style="margin-top:15px;"></div>
+        </div>
+
+        <a href="index.html" class="btn btn-back">← Назад в меню</a>
+    </div>
+
+    <script>
+        // Простая защита: только для админа (по email)
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        if (!currentUser || currentUser.email !== 'admin@penguin.ru') {
+            alert('Доступ запрещён! Вы не администратор.');
+            window.location.href = 'index.html';
+        }
+
+        // Загрузка пользователей
+        const users = JSON.parse(localStorage.getItem('users')) || [];
+        const listContainer = document.getElementById('adminUserList');
+        
+        if (users.length === 0) {
+            listContainer.innerHTML = '<p>Пользователей пока нет.</p>';
+        } else {
+            let html = '<ul>';
+            users.forEach(u => {
+                html += `<li><strong>${u.nick}</strong> (${u.email}) — 
+                         ${u.rubBalance || 0} ₽, 
+                         Пингвинов: ${u.penguins || 0}, 
+                         Рыбы: ${u.fish || 0}</li>`;
+            });
+            html += '</ul>';
+            listContainer.innerHTML = html;
+        }
+    </script>
+</body>
+</html>
