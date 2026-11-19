@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Игра — Пингвин Империя</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="game-page">
+
+    <div class="game-container">
+        <!-- Шапка: Баланс, Пингвины, Рыба -->
+        <header class="game-header">
+            <div class="stat">💰 <span id="rubBalance">0</span> ₽</div>
+            <div class="stat">🐧 <span id="penguinCount">0</span></div>
+            <div class="stat">🐟 <span id="fishCount">0</span></div>
+        </header>
+
+        <!-- Основное поле -->
+        <main class="game-main">
+            <div class="farm-area">
+                <!-- Кнопка сбора рыбы -->
+                <button id="collectFishBtn" class="clicker-btn">
+                    <span class="icon">🐟</span>
+                    <span class="text">Собрать рыбу</span>
+                </button>
+                <p class="hint">Каждый клик даёт 1 рыбу. Пингвины собирают рыбу автоматически!</p>
+            </div>
+
+            <!-- Магазин -->
+            <aside class="shop">
+                <h2>🛒 Магазин</h2>
+                <div id="shopItems"></div>
+                <button id="sellFishBtn" class="btn btn-start" style="margin-top:15px;">💰 Продать всю рыбу</button>
+            </aside>
+        </main>
+
+        <!-- Подвал -->
+        <footer class="game-footer">
+            <a href="index.html" class="btn btn-back">← В меню</a>
+            <a href="rules.html" class="btn btn-rules">📖 Правила</a>
+            <button id="logoutBtn" class="btn btn-rules" style="background:#ef4444;">🚪 Выйти</button>
+        </footer>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
